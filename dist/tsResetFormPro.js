@@ -1,0 +1,11 @@
+
+/**
+ * tsResetFormPro
+ * -----------------------------
+ * Version: 1.0.0
+ * Author: Tage Strandell
+ * Description:
+ * Robust reset handler for RSForm Pro (Joomla 5/6).
+ * License: MIT (recommended for GitHub)
+ */
+(function(){'use strict';const CONFIG={debug:false,language:'en',text:{en:{confirmReset:'Do you want to reset the form?'},sv:{confirmReset:'Vill du återställa formuläret?'}}};function t(k){return CONFIG.text[CONFIG.language][k]||k}function log(){if(CONFIG.debug)console.log('[tsResetFormPro]',...arguments)}function handleReset(){if(!window.confirm(t('confirmReset'))){log('Reset cancelled');return}window.location.href=window.location.pathname}function hijackResetButtons(form){const buttons=form.querySelectorAll('button[type="reset"], input[type="reset"], .rsform-reset-button');buttons.forEach(btn=>{if(btn._tsBound)return;btn._tsBound=true;btn.addEventListener('click',e=>{if(!form.classList.contains('rsform')&&!form.querySelector('.rsform-block'))return;e.preventDefault();handleReset()})})}function initForm(form){if(!form)return;if(!form.classList.contains('rsform')&&!form.querySelector('.rsform-block'))return;hijackResetButtons(form)}document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('form').forEach(initForm)});window.tsResetFormPro=handleReset})();

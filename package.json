@@ -1,0 +1,9 @@
+
+{
+  "name": "tsresetformpro",
+  "version": "1.0.0",
+  "description": "Robust reset handler for RSForm Pro (Joomla 5/6)",
+  "main": "tsResetFormPro.js",
+  "license": "MIT",
+  "author": "Tage Strandell"
+}
