@@ -33,14 +33,66 @@
 
 ## Usage
 
-Automatic (recommended):
+### Automatic behavior (recommended)
 
-The script detects RSForm forms and works out-of-the-box.
+The script works automatically **when using native reset buttons**:
 
-Manual trigger example:
+```html
+<button type="reset">Reset</button>
+```
+
+or
+
+```html
+<input type="reset" value="Reset">
+```
+
+In these cases:
+
+- The script automatically detects RSForm forms  
+- Reset buttons are intercepted  
+- A safe reset is performed using a forced GET request  
+
+✅ No additional configuration or `onclick` is required  
+
+---
+
+### Important
+
+The automatic behavior ONLY applies to elements with:
+
+```
+type="reset"
+```
+
+The following will **NOT** trigger the script automatically:
+
+```html
+<button type="button">Reset</button>
+<button>Reset</button> <!-- defaults to type="submit" -->
+```
+
+Note:  
+`<button>` defaults to `type="submit"` if no type is specified.
+
+---
+
+### Manual trigger (optional)
+
+You can manually trigger the reset function when needed:
 
 ```javascript
-window.tsResetFormPro();
+tsResetFormPro();
+```
+
+---
+
+### Example: custom reset button
+
+```html
+<button type="button" onclick="tsResetFormPro()">
+    Reset form
+</button>
 ```
 
 ---
